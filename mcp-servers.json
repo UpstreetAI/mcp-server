@@ -1,5 +1,9 @@
 {
   "servers": [
     "github:v-3/discordmcp"
+  ],
+  "envs": [
+    {
+    }
   ]
 }
