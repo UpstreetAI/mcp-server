@@ -1,0 +1,6 @@
+{
+  "servers": [
+    "github:v-3/discordmcp",
+    "github:qpd-v/mcp-communicator-telegram"
+  ]
+}
