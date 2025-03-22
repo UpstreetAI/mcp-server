@@ -218,6 +218,7 @@ class McpServer {
     }
   }
 }
+export default McpServer;
 
 // Add command line parsing if this is the main module
 if (import.meta.url === import.meta.resolve(process.argv[1])) {
@@ -253,5 +254,3 @@ if (import.meta.url === import.meta.resolve(process.argv[1])) {
     });
   program.parse();
 }
-
-export default McpServer;
