@@ -20,11 +20,12 @@
     "lint": "eslint src --ext .ts",
     "typecheck": "tsc --noEmit",
     "start": "node dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "pnpm start -- --port 8000 ./mcp-servers.json"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",
     "commander": "^13.1.0",
+    "dotenv": "^16.4.7",
     "hono": "^4.7.5",
     "mkdirp": "^3.0.1",
     "pnpm": "^10.6.5",

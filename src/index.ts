@@ -3,15 +3,11 @@ import fs from 'fs/promises';
 import child_process from 'child_process';
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
+import dotenv from 'dotenv';
+import { Command } from 'commander';
 import { mkdirp } from 'mkdirp';
 import { rimraf } from 'rimraf';
-import { Command } from 'commander';
 import { PnpmPackageLookup } from "pnpm-package-lookup";
-
-// pnpm start -- --port 8000 ./mcp-servers.json
-
-// npx -y supergateway --port 8000 \
-//     --stdio "npx -y @modelcontextprotocol/server-filesystem /Users/MyName/Desktop"
 
 const __dirname = path.join(path.dirname(import.meta.url.replace('file://', '')), '..');
 
@@ -225,6 +221,8 @@ class McpServer {
 
 // Add command line parsing if this is the main module
 if (import.meta.url === import.meta.resolve(process.argv[1])) {
+  dotenv.config();
+
   const program = new Command();
   
   program
