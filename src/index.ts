@@ -32,6 +32,7 @@ const sortNpmPackages = (packageSpecifiers: string[]) => {
 class SimpleMcpServer {
   private serversJson: {
     servers: string[];
+    envs: Record<string, string>[];
   };
   private port: number;
   private internalPortStart: number;
@@ -58,7 +59,10 @@ class SimpleMcpServer {
     await mkdirp(appPackagesDir);
 
     // install the servers with pnpm
-    const { servers = [] } = this.serversJson;
+    const {
+      servers = [],
+      envs = Array(servers.length).fill(null).map(() => ({})),
+    } = this.serversJson;
     let {
       npm,
       github,
@@ -162,7 +166,7 @@ class SimpleMcpServer {
       const dirName = JSON.stringify(path.join(appDir, 'node_modules', packageSpecifier));
 
       const command = `pnpm --dir ${dirName} start`;
-      console.log('pnpm command', command);
+      // console.log('pnpm command', command);
       const cp = child_process.spawn(path.join(__dirname, 'node_modules', '.bin', 'supergateway'), [
         '--stdio',
         command,
