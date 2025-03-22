@@ -165,7 +165,11 @@ class SimpleMcpServer {
       const port = this.internalPortStart + index;
       const dirName = JSON.stringify(path.join(appDir, 'node_modules', packageSpecifier));
 
-      const command = `pnpm --dir ${dirName} start`;
+      const env: Record<string, string> = envs[index];
+      const envString = Object.entries(env)
+        .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
+        .join(' ');
+      const command = `${envString} pnpm --dir ${JSON.stringify(dirName)} start`;
       // console.log('pnpm command', command);
       const cp = child_process.spawn(path.join(__dirname, 'node_modules', '.bin', 'supergateway'), [
         '--stdio',
