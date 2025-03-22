@@ -9,6 +9,8 @@ import { mkdirp } from 'mkdirp';
 import { rimraf } from 'rimraf';
 import { PnpmPackageLookup } from "pnpm-package-lookup";
 
+// PORT=8000 pnpm dev -- ./mcp-servers.json
+
 const __dirname = path.join(path.dirname(import.meta.url.replace('file://', '')), '..');
 
 const sortNpmPackages = (packageSpecifiers: string[]) => {
@@ -237,10 +239,9 @@ if (import.meta.url === import.meta.resolve(process.argv[1])) {
     .description('A server for managing MCP (Model Context Protocol) providers')
     .version('0.0.1')
     .argument('[config]', 'Path to servers configuration file', './mcp-servers.json')
-    .option('-p, --port <port>', 'Port to run the server on', '3000')
     .action(async (config, options) => {
       // Set port from command line
-      const port = Number(options.port) || undefined;
+      const port = Number(process.env.PORT) || undefined;
       
       try {
         // Load servers configuration from the specified path
