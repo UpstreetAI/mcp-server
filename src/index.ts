@@ -61,6 +61,7 @@ class McpServer {
       npm,
       github,
     } = sortNpmPackages(servers);
+    const allServers = [...npm, ...github];
 
     // git clone and pnpm build the github packages
     github = await Promise.all(github.map(async (packageSpecifier) => {
@@ -173,10 +174,11 @@ class McpServer {
       cp.stderr.pipe(process.stderr);
       
       // Store server name and port mapping
-      serverPortMap.set(server, port);
+      const serverRef = encodeURIComponent(allServers[index]);
+      serverPortMap.set(serverRef, port);
 
       return {
-        server,
+        serverRef,
       };
     }));
 
@@ -191,18 +193,18 @@ class McpServer {
         });
       });
       cps.forEach((cp: {
-        server: string,
+        serverRef: string,
       }) => {
-        app.all(`/${cp.server}/*`, async (c) => {
-          const targetPort = serverPortMap.get(cp.server);
+        app.all(`/${cp.serverRef}`, async (c) => {
+          const targetPort = serverPortMap.get(cp.serverRef);
           if (!targetPort) {
             return c.json({ error: 'Server not found' }, 404);
           }
           
           const req = c.req.raw;
-          const target = `http://localhost:${targetPort}`;
+          const target = `http://localhost:${targetPort}/sse`;
 
-          const proxyRes = await fetch(target + c.req.path, {
+          const proxyRes = await fetch(target, {
             method: req.method,
             body: req.body,
             headers: req.headers,
@@ -217,6 +219,7 @@ class McpServer {
         port: this.port,
       }, () => {
         console.log(`MCP Server is running on port ${this.port}`);
+        console.log('running servers:\n', allServers.map(server => `  http://localhost:${this.port}/${encodeURIComponent(server)}`).join('\n'));
       });
     }
   }
