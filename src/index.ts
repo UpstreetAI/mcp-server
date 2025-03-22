@@ -29,7 +29,7 @@ const sortNpmPackages = (packageSpecifiers: string[]) => {
   };
 };
 
-class McpServer {
+class SimpleMcpServer {
   private serversJson: {
     servers: string[];
   };
@@ -226,7 +226,7 @@ class McpServer {
     }
   }
 }
-export default McpServer;
+export default SimpleMcpServer;
 
 // Add command line parsing if this is the main module
 if (import.meta.url === import.meta.resolve(process.argv[1])) {
@@ -235,7 +235,7 @@ if (import.meta.url === import.meta.resolve(process.argv[1])) {
   const program = new Command();
   
   program
-    .name('mcp-server')
+    .name('simple-mcp-server')
     .description('A server for managing MCP (Model Context Protocol) providers')
     .version('0.0.1')
     .argument('[config]', 'Path to servers configuration file', './mcp-servers.json')
@@ -252,7 +252,7 @@ if (import.meta.url === import.meta.resolve(process.argv[1])) {
         const serversJson = JSON.parse(fileContent);
         
         // Start the server
-        const server = new McpServer({ serversJson, port });
+        const server = new SimpleMcpServer({ serversJson, port });
         await server.start();
       } catch (error) {
         console.error('Failed to start MCP server:', error);
