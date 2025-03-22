@@ -146,16 +146,26 @@ class McpServer {
     });
 
     // Start MCP servers from configuration
-    const pnpmLockYamlPath = path.resolve(__dirname, "pnpm-lock.yaml");
+    const pnpmLockYamlPath = path.resolve(appDir, "pnpm-lock.yaml");
     const pnpmPackageLookup = new PnpmPackageLookup({
       pnpmLockYamlPath,
     });
     const serverPortMap = new Map<string, number>();
-    const cps = await Promise.all(servers.map(async (server: string, index: number) => {
+    const cps = await Promise.all(installPackages.map(async (server: string, index: number) => {
       const packageSpecifier = await pnpmPackageLookup.getPackageNameBySpecifier(server);
+      if (!packageSpecifier) {
+        throw new Error(`Package specifier not found: ${server}`);
+      }
       const port = this.internalPortStart + index;
+      // console.log('packageSpecifier', {
+      //   pnpmLockYamlPath,
+      //   appDir,
+      //   server,
+      //   packageSpecifier,
+      // });
+      const dirName = JSON.stringify(path.join(appDir, 'node_modules', packageSpecifier));
 
-      const command = `pnpm --dir ${JSON.stringify(path.join(appDir, 'node_modules', packageSpecifier))} start`;
+      const command = `pnpm --dir ${dirName} start`;
       console.log('pnpm command', command);
       const cp = child_process.spawn(path.join(__dirname, 'node_modules', '.bin', 'supergateway'), [
         '--stdio',
