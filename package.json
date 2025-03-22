@@ -1,6 +1,6 @@
 {
-  "name": "mcp-server",
-  "version": "0.0.2",
+  "name": "simple-mcp-server",
+  "version": "0.0.1",
   "description": "",
   "homepage": "https://github.com/UpstreetAI/mcp-server#readme",
   "bugs": {
