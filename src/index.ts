@@ -119,7 +119,6 @@ class McpServer {
       return `file:${path.join(appPackagesDir, packageBaseName)}`;
     }));
     const installPackages = [...npm, ...github];
-    // console.log('installPackages', installPackages);
     await new Promise((resolve, reject) => {
       const cp = child_process.spawn(
         path.join(__dirname, 'node_modules', '.bin', 'pnpm'),
@@ -157,12 +156,6 @@ class McpServer {
         throw new Error(`Package specifier not found: ${server}`);
       }
       const port = this.internalPortStart + index;
-      // console.log('packageSpecifier', {
-      //   pnpmLockYamlPath,
-      //   appDir,
-      //   server,
-      //   packageSpecifier,
-      // });
       const dirName = JSON.stringify(path.join(appDir, 'node_modules', packageSpecifier));
 
       const command = `pnpm --dir ${dirName} start`;
