@@ -1,0 +1,42 @@
+{
+  "name": "mcp-server",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/UpstreetAI/mcp-server#readme",
+  "bugs": {
+    "url": "https://github.com/UpstreetAI/mcp-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UpstreetAI/mcp-server.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "commander": "^13.1.0",
+    "hono": "^4.7.5",
+    "mkdirp": "^3.0.1",
+    "pnpm": "^10.6.5",
+    "pnpm-package-lookup": "^0.0.2",
+    "rimraf": "^6.0.1",
+    "supergateway": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "eslint": "^9.23.0",
+    "tsup": "^8.4.0",
+    "turbo": "^2.4.4",
+    "typescript": "^5.8.2"
+  }
+}
