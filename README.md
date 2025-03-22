@@ -1,3 +1,3 @@
 # TypeScript MCP Server
 
-A server for managing MCP (Model Context Protocol) providers.
+A server for running stdio MCP servers on the network.
