@@ -2,13 +2,13 @@
   "name": "simple-mcp-server",
   "version": "0.0.1",
   "description": "",
-  "homepage": "https://github.com/UpstreetAI/mcp-server#readme",
+  "homepage": "https://github.com/UpstreetAI/simple-mcp-server#readme",
   "bugs": {
-    "url": "https://github.com/UpstreetAI/mcp-server/issues"
+    "url": "https://github.com/UpstreetAI/simple-mcp-server/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UpstreetAI/mcp-server.git"
+    "url": "git+https://github.com/UpstreetAI/simple-mcp-server.git"
   },
   "license": "ISC",
   "author": "",
