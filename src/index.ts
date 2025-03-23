@@ -170,7 +170,7 @@ class SimpleMcpServer {
         .map(([key, value]) => `${key}=${JSON.stringify(value)}`)
         .join(' ');
       const command = `${envString} pnpm --dir ${JSON.stringify(dirName)} start`;
-      // console.log('pnpm command', command);
+      console.log('plugin command', command);
       const cp = child_process.spawn(path.join(__dirname, 'node_modules', '.bin', 'supergateway'), [
         '--stdio',
         command,
