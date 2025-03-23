@@ -163,7 +163,7 @@ class SimpleMcpServer {
         throw new Error(`Package specifier not found: ${server}`);
       }
       const port = this.internalPortStart + index;
-      const dirName = JSON.stringify(path.join(appDir, 'node_modules', packageSpecifier));
+      const dirName = path.join(appDir, 'node_modules', packageSpecifier);
 
       const env: Record<string, string> = envs[index];
       const envString = Object.entries(env)
