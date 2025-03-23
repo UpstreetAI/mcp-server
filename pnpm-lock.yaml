@@ -35,6 +35,9 @@ importers:
       supergateway:
         specifier: ^2.3.2
         version: 2.3.2
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(typescript@5.8.2)(yaml@2.7.0)
     devDependencies:
       '@types/node':
         specifier: ^22.13.11
@@ -42,9 +45,6 @@ importers:
       eslint:
         specifier: ^9.23.0
         version: 9.23.0
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(typescript@5.8.2)(yaml@2.7.0)
       turbo:
         specifier: ^2.4.4
         version: 2.4.4

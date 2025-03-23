@@ -31,12 +31,12 @@
     "pnpm": "^10.6.5",
     "pnpm-package-lookup": "^0.0.2",
     "rimraf": "^6.0.1",
-    "supergateway": "^2.3.2"
+    "supergateway": "^2.3.2",
+    "tsup": "^8.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.11",
     "eslint": "^9.23.0",
-    "tsup": "^8.4.0",
     "turbo": "^2.4.4",
     "typescript": "^5.8.2"
   }
