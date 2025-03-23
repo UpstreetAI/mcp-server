@@ -15,12 +15,7 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsup",
-    "dev": "./node_modules/.bin/tsup --watch --onSuccess \"node dist/index.js\"",
-    "lint": "eslint src --ext .ts",
-    "typecheck": "tsc --noEmit",
-    "start": "node dist/server.js",
-    "test": "pnpm start -- --port 8000 ./mcp-servers.json"
+    "dev": "./node_modules/.bin/tsup --watch --onSuccess \"node dist/index.js\""
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",
