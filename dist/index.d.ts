@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 declare class SimpleMcpServer {
     private serversJson;
     private port;

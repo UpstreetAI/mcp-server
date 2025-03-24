@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // src/index.ts
 import path from "path";
 import fs from "fs/promises";
