@@ -246,8 +246,12 @@ if (import.meta.url === import.meta.resolve(process.argv[1])) {
     .name('simple-mcp-server')
     .description('A server for managing MCP (Model Context Protocol) providers')
     .version('0.0.1')
-    .argument('[config]', 'Path to servers configuration file', './mcp-servers.json')
-    .action(async (config, options) => {
+    .argument('[config]', 'Path to servers configuration file')
+    .action(async (config) => {
+      if (!config) {
+        throw new Error('No servers configuration file argument provided');
+      }
+
       // Set port from command line
       const port = Number(process.env.PORT) || undefined;
       
