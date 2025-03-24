@@ -15,7 +15,9 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/tsup --watch --onSuccess \"node dist/index.js\""
+    "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
+    "start": "node dist/index.js",
+    "build": "tsup"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",
